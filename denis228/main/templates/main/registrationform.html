@@ -1,0 +1,28 @@
+  <div class="wrapper">
+
+            <div class="page_content-wrapper">
+                <div class="page-content">
+                    <div class="page_content-wrapper">
+                        <div class="login-wrapper">
+                            <div class="login">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <h2>Регистрация</h2>
+                                    <label>ФИО <A style="color: red;">*</A></label>
+                                    <input type="text" required>
+
+                                    <label>Email</label>
+                                    <input type="text"required>
+
+                                    <label>Пароль:</label>
+                                    <input type="text" required>
+
+                                    <button type="submit">Зарегистрироваться</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

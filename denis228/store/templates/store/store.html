@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Магазин</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/media.css' %}">
+	<title>Document</title>
+
+</head>
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div>
+			  <nav>
+				<div class="logo"><img src="" width="50px"></div>
+				<ul class="menu">
+                    <li class="cart"><img style="width: 32px;" src=""></a></li>
+				  <li><a href="{% url 'main' %}">Главная</a></li>
+				  <li><a href="#">Услуги</a></li>
+				  <li><a href="#">О нас</a></li>
+				  <li><a>Личный кабинет</a></li>
+				</ul>
+				<div class="mobile-menu">
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				</div>
+			  </nav>
+			</div>
+		</header>
+			<main class="main">
+				<div class="content-main-block-background">
+                    <h1 style="text-align: center;">Магазин оборудования</h1>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                          <a href="#">Видеокамеры</a>
+                          <ul>
+                            <li><a href="#">Внутренние видеокамеры</a></li>
+                            <li><a href="#">Уличные видеокамеры</a></li>
+                            <li><a href="#">Поворотные видеокамеры</a></li>
+                            <li><a href="#">Скрытые видеокамеры</a></li>
+                            <li><a href="#">Wi-Fi камеры</a></li>
+                          </ul>
+                        </div>
+                        <div class="grid-item">
+                          <a href="#">Регистраторы</a>
+                          <ul>
+                            <li><a href="#">DVR регистраторы</a></li>
+                            <li><a href="#">NVR регистраторы</a></li>
+                            <li><a href="#">HVR регистраторы</a></li>
+                            <li><a href="#">Портативные регистраторы</a></li>
+                            <li><a href="#">Автомобильные регистраторы</a></li>
+                          </ul>
+                        </div>
+                        <div class="grid-item">
+                          <a href="#">Аксессуары</a>
+                          <ul>
+                            <li><a href="#">Кабели и разъемы</a></li>
+                            <li><a href="#">Источники питания</a></li>
+                            <li><a href="#">Крепления и держатели</a></li>
+                            <li><a href="#">Жесткие диски и память</a></li>
+                            <li><a href="#">Камеры и объективы</a></li>
+                            <li><a href="#">Мониторы и дисплеи</a></li>
+                          </ul>
+                        </div>
+                      </div>
+				</div>
+<div class="products">
+	<div class="product-grid">
+		{% for product in products %}
+  <div class="product">
+	<img class="card-img-top" src="{{ product.image }}">
+	<div class="card-body">
+	  <h5 class="card-title">{{ product.name }}</h5>
+	  <p class="card-text"></p>
+	  <p><div class="product__quantity"></div></p>
+	  <div class="card-price">
+		
+	  <a class="button-shop">Добавить в корзину</a>
+
+	  <a href="#" class="btn btn-primary"></a>
+</div>
+	</div>
+  </div>
+						{% endfor %}
+
+
+</div>
+
+</div>
+			</main>
+      <div class="row">
+</div>
+	</div>
+			<footer class="footer">
+				<div class="container">
+				  <div class="footer__wrapper">
+					<div class="footer__item">
+					  <h3 class="footer__heading">Монтаж систем видеонаблюдения</h3>
+					  <ul class="footer__list">
+						<li class="footer__list-item"><a href="tel:+78005553535">8800553535</a></li>
+						<li class="footer__list-item"><a href="">Служба поддержки</a></li>
+					  </ul>
+					</div>
+					<div class="footer__item">
+					  <h3 class="footer__heading">Продукты</h3>
+					  <ul class="footer__list">
+						<li class="footer__list-item"><a href="tel:+78005553535">Видеонаблюдение</a></li>
+						<li class="footer__list-item"><a href="">Системы пожарной безопасности</a></li>
+						<li class="footer__list-item"><a href="">Охранные системы</a></li>
+
+					  </ul>
+					</div>
+					<div class="footer__item">
+					  <h3 class="footer__heading">Решения</h3>
+					  <ul class="footer__list">
+						<li class="footer__list-item"><a href="tel:+78005553535">Умные экраны</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">О компании</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">Услуги безопасности</a></li>
+					  </ul>
+					</div>
+				  </div>
+				  <div class="footer__bottom">
+				  </div>
+				</div>
+			  </footer>
+</body>
+</html>
