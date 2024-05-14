@@ -15,7 +15,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='med    ia/')
+    image = models.ImageField(upload_to='media/')
     stock = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -23,6 +23,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media/')
 
 class ProductAttribute(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
