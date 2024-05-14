@@ -1,0 +1,14 @@
+{% extends 'store/store.html' %}
+
+{% block content %}
+    <div class="product">
+        {% if product.name %}
+            <div class="date">
+                {{ product.created_at }}
+            </div>
+        {% endif %}
+        <h1>{{ product.name }}</h1>
+        <p><img src="{{ product.image }}" alt="{{ product.name }}"></p>
+        <p>{{ product.description|linebreaksbr }}</p>
+    </div>
+{% endblock %}

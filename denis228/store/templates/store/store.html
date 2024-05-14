@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'main/css/media.css' %}">
+	<link href="{% static 'main/css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
 	<title>Document</title>
 
 </head>
@@ -21,9 +22,9 @@
 				<ul class="menu">
                     <li class="cart"><img style="width: 32px;" src=""></a></li>
 				  <li><a href="{% url 'main' %}">Главная</a></li>
-				  <li><a href="#">Услуги</a></li>
-				  <li><a href="#">О нас</a></li>
-				  <li><a>Личный кабинет</a></li>
+				  <li><a href="#">авав</a></li>
+				  <li><a href="#">аввав</a></li>
+				  <li><a>ававав</a></li>
 				</ul>
 				<div class="mobile-menu">
 				  <div class="bar"></div>
@@ -72,24 +73,8 @@
 				</div>
 <div class="products">
 	<div class="product-grid">
-		{% for product in products %}
-  <div class="product">
-	<img class="card-img-top" src="{{ product.image }}">
-	<div class="card-body">
-	  <h5 class="card-title">{{ product.name }}</h5>
-	  <p class="card-text"></p>
-	  <p><div class="product__quantity"></div></p>
-	  <div class="card-price">
-		
-	  <a class="button-shop">Добавить в корзину</a>
-
-	  <a href="#" class="btn btn-primary"></a>
-</div>
-	</div>
-  </div>
-						{% endfor %}
-
-
+		{% block content %}
+            {% endblock %}
 </div>
 
 </div>
@@ -101,27 +86,27 @@
 				<div class="container">
 				  <div class="footer__wrapper">
 					<div class="footer__item">
-					  <h3 class="footer__heading">Монтаж систем видеонаблюдения</h3>
+					  <h3 class="footer__heading">Аааа</h3>
 					  <ul class="footer__list">
-						<li class="footer__list-item"><a href="tel:+78005553535">8800553535</a></li>
-						<li class="footer__list-item"><a href="">Служба поддержки</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">Аааа</a></li>
+						<li class="footer__list-item"><a href="">Аааа</a></li>
 					  </ul>
 					</div>
 					<div class="footer__item">
 					  <h3 class="footer__heading">Продукты</h3>
 					  <ul class="footer__list">
-						<li class="footer__list-item"><a href="tel:+78005553535">Видеонаблюдение</a></li>
-						<li class="footer__list-item"><a href="">Системы пожарной безопасности</a></li>
-						<li class="footer__list-item"><a href="">Охранные системы</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">Аааа</a></li>
+						<li class="footer__list-item"><a href="">Аааа</a></li>
+						<li class="footer__list-item"><a href="">Аааа</a></li>
 
 					  </ul>
 					</div>
 					<div class="footer__item">
-					  <h3 class="footer__heading">Решения</h3>
+					  <h3 class="footer__heading">Аааа</h3>
 					  <ul class="footer__list">
-						<li class="footer__list-item"><a href="tel:+78005553535">Умные экраны</a></li>
-						<li class="footer__list-item"><a href="tel:+78005553535">О компании</a></li>
-						<li class="footer__list-item"><a href="tel:+78005553535">Услуги безопасности</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">Аааа</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">Аааа</a></li>
+						<li class="footer__list-item"><a href="tel:+78005553535">Аааа</a></li>
 					  </ul>
 					</div>
 				  </div>
@@ -129,5 +114,6 @@
 				  </div>
 				</div>
 			  </footer>
+<script src="{% static 'main/js/bootstrap/bootstrap.min.js' %}"></script>
 </body>
 </html>
