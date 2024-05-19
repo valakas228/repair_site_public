@@ -17,6 +17,38 @@ body {
     min-height: 100vh;
 }
 
+/* styles.css */
+.cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+.cart h3 {
+    margin-top: 0;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-items li {
+    margin-bottom: 5px;
+}
+
+.total-price {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
 .header {
     border-bottom: 1px solid #f0f0f0;
     border-bottom-width: 1px;
@@ -343,9 +375,6 @@ button{
     text-align: center;
 }
 
-.header ul li a{
-  color: black;
-}
 
 .logo {
     width: 150px;
@@ -487,7 +516,8 @@ ul {
     position: relative;
     max-width: 1400px;
     margin: auto;
-    padding-bottom: 50px;
+    padding: 50px;
+    margin-top: 50px;
 }
 
 .products img{
