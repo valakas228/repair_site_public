@@ -14,10 +14,12 @@
 
 </head>
 <body>
+{% include 'store/cart_items.html' %}
 	<div class="wrapper">
 		<header class="header">
 			<div>
 			  <nav>
+				  <input type="search" placeholder="Поиск товара">
 				<div class="logo"><img src="" width="50px"></div>
 				<ul class="menu">
                     <li class="cart"><img style="width: 32px;" src=""></a></li>
@@ -114,6 +116,8 @@
 				  </div>
 				</div>
 			  </footer>
+<script src="{% static 'main/js/jquery/jquery-3.7.1.js' %}"></script>
+<script src="{% static 'main/js/script.js' %}"></script>
 <script src="{% static 'main/js/bootstrap/bootstrap.min.js' %}"></script>
 </body>
 </html>
