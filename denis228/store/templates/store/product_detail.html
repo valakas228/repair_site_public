@@ -1,14 +1,59 @@
 {% extends 'store/store.html' %}
 
 {% block content %}
-    <div class="product">
-        {% if product.name %}
-            <div class="date">
-                {{ product.created_at }}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
             </div>
-        {% endif %}
-        <h1>{{ product.name }}</h1>
-        <p><img src="{{ product.image }}" alt="{{ product.name }}"></p>
-        <p>{{ product.description|linebreaksbr }}</p>
+            <div class="col-lg-6">
+                <div class="product-details">
+                    <h2>{{ product.name }}</h2>
+                    <p class="text-muted">Добавлен: {{ product.created_at|date:"d F Y" }}</p>
+                    <hr>
+                    <p class="description">{{ product.description|linebreaks }}</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Цена:</strong> ₽{{ product.price }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Наличие:</strong> {% if product.available %}В наличии{% else %}Нет в наличии{% endif %}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <form method="POST" action="{% url 'add_to_cart' product.slug %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить в корзину</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Отзывы и комментарии</h3>
+                <p>Здесь вы можете оставить свой отзыв или комментарий о товаре.</p>
+<form method="post" action="{% url 'add_comment' slug=product.slug %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="comment">Оставьте свой отзыв:</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+                <hr>
+                <div class="comments">
+                    {% for comment in product.comments.all %}
+                        <div class="comment">
+                            <p>{{ comment.text }}</p>
+                            <p class="text-muted">Автор: {{ comment.author }}, Дата: {{ comment.created_at|date:"d F Y" }}</p>
+                        </div>
+                    {% empty %}
+                        <p>Пока нет отзывов.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
