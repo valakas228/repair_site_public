@@ -6,12 +6,6 @@ var IsMenuShow5 = false;
 var IsAboutMoreContentShown = false
 let offset = 0;
 
-
-
-
-
-
-
 const moreBtns = document.querySelectorAll('.more-btn');
 
 moreBtns.forEach(btn => {
@@ -69,3 +63,5 @@ function checkScroll() {
 }
 
 window.addEventListener('scroll', checkScroll);
+
+
