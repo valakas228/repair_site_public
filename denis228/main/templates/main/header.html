@@ -1,19 +1,23 @@
 {% load static %}
-	<header class="header">
-			<div>
-				<nav>
-					<div class="logo"><a href="{% url 'main' %}"><img src="{% static 'main/imgs/logo.jpg' %}" width="50px""></a></div>
-					<ul class="menu">
-						<li><a href="">Доставка и оплата</a></li>
-						<li><a href="{% url 'store' %}">Магазин</a></li>
-						<li><a href="">Информация</a></li>
-						<li><a href="">Войти</a></li>
-					</ul>
-					<div class="mobile-menu">
-						<div class="bar"></div>
-						<div class="bar"></div>
-						<div class="bar"></div>
-					</div>
-				</nav>
-			</div>
-		</header>
+<header class="header">
+    <div>
+        <nav>
+            <div class="logo"><a href="{% url 'main' %}"><img src="{% static 'main/imgs/logo.jpg' %}" width="50px"></a></div>
+            <ul class="menu">
+                <li><a href="">Доставка и оплата</a></li>
+                <li><a href="{% url 'store' %}">Магазин</a></li>
+                <li><a href="">Информация</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </div>
+</header>
