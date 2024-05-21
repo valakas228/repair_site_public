@@ -512,6 +512,17 @@ ul {
     opacity: 1;
   }
 
+#cart-toggler {
+    font-size: 24px;
+    color: black;
+    transition: transform 0.3s ease;
+}
+
+#cart-toggler:hover {
+    transform: scale(1.1);
+}
+
+
 .products{
     position: relative;
     max-width: 1400px;
