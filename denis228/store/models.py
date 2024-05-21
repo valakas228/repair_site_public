@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+import requests
+from django.core.files.base import ContentFile
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -9,6 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
@@ -16,10 +20,19 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='media/', blank=True)
+    image_url = models.URLField(blank=True, null=True)
     stock = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if self.image_url and not self.image:
+            response = requests.get(self.image_url)
+            if response.status_code == 200:
+                image_name = self.image_url.split("/")[-1]
+                self.image.save(image_name, ContentFile(response.content), save=False)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -44,6 +57,7 @@ class RepairService(models.Model):
     def __str__(self):
         return f"{self.device.name} - {self.service_name}"
 
+
 class Comment(models.Model):
     product = models.ForeignKey('Product', related_name='comments', on_delete=models.CASCADE)
     author = models.CharField(max_length=100)
@@ -65,6 +79,8 @@ class Cart(models.Model):
             return f"Cart for {self.user.username}"
         else:
             return "Cart for anonymous user"
+
+
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
