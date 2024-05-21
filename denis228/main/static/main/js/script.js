@@ -6,6 +6,18 @@ var IsMenuShow5 = false;
 var IsAboutMoreContentShown = false
 let offset = 0;
 
+document.addEventListener('DOMContentLoaded', function() {
+    var cartToggler = document.getElementById('cart-toggler');
+    var cart = document.querySelector('.cart');
+
+    cartToggler.addEventListener('click', function() {
+        // Переключаем класс show для корзины, чтобы показать или скрыть ее с анимацией
+        cart.classList.toggle('show');
+    });
+});
+
+
+
 const moreBtns = document.querySelectorAll('.more-btn');
 
 moreBtns.forEach(btn => {
