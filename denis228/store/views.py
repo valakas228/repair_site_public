@@ -60,6 +60,7 @@ def view_cart(request):
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     return render(request, 'store/cart_items.html', {'cart': cart, 'cart_items': cart_items, 'total_price': total_price})
 
+@login_required
 def add_to_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
     cart, created = Cart.objects.get_or_create(user=request.user)
@@ -69,6 +70,7 @@ def add_to_cart(request, slug):
         cart_item.save()
     return redirect('view_cart')
 
+@login_required
 def remove_from_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
     cart = Cart.objects.get(user=request.user)
