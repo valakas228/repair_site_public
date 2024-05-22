@@ -1,10 +1,11 @@
 from django.core.management.base import BaseCommand
-from ...models import Category
+from ...models import Category, PriceList
+
 
 class Command(BaseCommand):
-    help = 'Добавляет категории товаров в базу данных'
+    help = 'Adds price list entries for categories'
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **kwargs):
         categories = [
             {'name': 'Смартфоны', 'slug': 'smartphones', 'description': 'Ремонт и обслуживание смартфонов'},
             {'name': 'Планшеты', 'slug': 'tablets', 'description': 'Ремонт и обслуживание планшетов'},
@@ -19,12 +20,7 @@ class Command(BaseCommand):
         ]
 
         for category_data in categories:
-            category, created = Category.objects.get_or_create(
-                name=category_data['name'],
-                slug=category_data['slug'],
-                defaults={'description': category_data['description']}
-            )
-            if created:
-                self.stdout.write(self.style.SUCCESS(f"Категория '{category.name}' была успешно создана."))
-            else:
-                self.stdout.write(self.style.WARNING(f"Категория '{category.name}' уже существует."))
+            category, _ = Category.objects.get_or_create(slug=category_data['slug'], defaults=category_data)
+            PriceList.objects.create(category=category, repair_type='Тип ремонта', price=100.00)
+
+        self.stdout.write(self.style.SUCCESS('Price list entries added successfully'))

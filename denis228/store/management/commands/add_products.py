@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from store.models import Category, Product
+from ...models import Category, Product
 import os
 from django.conf import settings
 
@@ -17,6 +17,15 @@ class Command(BaseCommand):
                 'image': 'iphone-14-pro-small.jpeg',
                 'stock': 10,
                 'available': True,
+            },
+            {
+                'category_slug': 'electronics',
+                'name': 'Sony WH-1000XM4',
+                'slug': 'sony-wh-1000xm4',
+                'description': 'Noise-cancelling wireless headphones.',
+                'price': 349.99,
+                'stock': 30,
+                'available': True
             },
             {
                 'category_slug': 'smartphones',
@@ -100,7 +109,6 @@ class Command(BaseCommand):
                     defaults={
                         'description': product_data['description'],
                         'price': product_data['price'],
-                        'image': os.path.join('products', product_data['image']),
                         'stock': product_data['stock'],
                         'available': product_data['available'],
                     }

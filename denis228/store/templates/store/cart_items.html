@@ -1,29 +1,39 @@
 {% extends 'store/cart.html' %}
+
 {% block items %}
 <ul class="list-group mb-3">
     {% for item in cart_items %}
         <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
                 <h6 class="my-0">{{ item.product.name }}</h6>
-                <small class="text-muted">Quantity: {{ item.quantity }}</small>
+                <small class="text-muted">Количество: {{ item.quantity }}</small>
             </div>
             <div class="btn-group">
                 <form action="{% url 'remove_from_cart' item.product.slug %}" method="post" class="remove-from-cart-form">
                     {% csrf_token %}
-    <button type="submit" class="btn btn-sm btn-outline-secondary remove-from-cart-btn" data-product-id="{{ item.product.id }}">-</button>
+                    <button type="submit" class="btn btn-sm btn-outline-secondary remove-from-cart-btn" data-product-id="{{ item.product.id }}">-</button>
                 </form>
                 <span class="mx-2">{{ item.quantity }}</span>
                 <form action="{% url 'add_to_cart' item.product.slug %}" method="post" class="add-to-cart-form">
                     {% csrf_token %}
-    <button type="submit" class="btn btn-sm btn-outline-secondary add-to-cart-btn" data-product-id="{{ item.product.id }}">+</button>
+                    <button type="submit" class="btn btn-sm btn-outline-secondary add-to-cart-btn" data-product-id="{{ item.product.id }}">+</button>
                 </form>
             </div>
-            <span class="text-muted">${{ item.product.price }}</span>
+            <span class="text-muted">Р{{ item.product.price }}</span>
         </li>
     {% endfor %}
     <li class="list-group-item d-flex justify-content-between">
         <span>Итого</span>
         <strong>Р{{ total_price }}</strong>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+{% if cart_items %}
+    <form action="{% url 'create_order' cart_items.0.product.slug %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Оформить заказ</button>
+    </form>
+{% endif %}
+
     </li>
 </ul>
 {% endblock %}

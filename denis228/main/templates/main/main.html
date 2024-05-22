@@ -1,16 +1,19 @@
+{% load static %}
 <main class="main">
 			<div class="content-main-block-background">
 				<div class="content-main-block">
 
 					<div class="content-main-block-container1">
 						<div>
-							<h1 class="content-main-block-container1-h1">Lorem ipsum dolor sit amet</h1>
+							<h1 class="content-main-block-container1-h1">Сервисный центр FixIT</h1>
 						</div>
 						<div>
 							<ul>
-								<li><span class="checkmark">&#10004;</span>Lorem ipsum dolor sit amet.</li>
-								<li><span class="checkmark">&#10004;</span>Lorem ipsum dolor sit amet.</li>
-								<li><span class="checkmark">&#10004;</span>Lorem ipsum dolor sit amet.</li>
+								<li><span class="checkmark">&#10004;</span>Сервисный Центр «FiIT» — ремонт электронной техники в Ульяновске в Ульяновске. .</li>
+								<li><span class="checkmark">&#10004;</span>Доставка.</li>
+								<li><span class="checkmark">&#10004;</span>Диагностика.</li>
+								<li><span class="checkmark">&#10004;</span>Ремонт..</li>
+
 							</ul>
 						</div>
 						<div class="button-container"><button class="btn">Оставить заявку</button>
@@ -26,10 +29,10 @@
 						<div class="description-wrapper">
 							<div class="description">
 								<ul>
-									<li><span class="checkmark">&#10004;</span></li>
-									<li><span class="checkmark">&#10004;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aspernatur dolor itaque labore necessitatibus nostrum odit perspiciatis provident quaerat!</li>
-									<li><span class="checkmark">&#10004;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores deleniti deserunt, dicta dignissimos dolores doloribus odio placeat sunt temporibus?</li>
-									<li><span class="checkmark">&#10004;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium libero nisi quae voluptas! Amet, doloremque modi nesciunt qui tempora voluptatem?</li>
+								  <li><span class="checkmark">&#10004;</span>Мы предоставляем услуги по ремонту всех типов электроники, включая смартфоны, планшеты, ноутбуки, компьютеры и другие устройства.</li>
+                            <li><span class="checkmark">&#10004;</span>Наша команда профессионалов гарантирует быстрый и качественный ремонт вашей техники.</li>
+                            <li><span class="checkmark">&#10004;</span>Мы используем только оригинальные запчасти и современное оборудование для диагностики и ремонта.</li>
+                            <li><span class="checkmark">&#10004;</span>Мы стремимся предоставить нашим клиентам надежные и доступные решения для всех их потребностей в ремонте электроники.</li>
 								</ul>
 							</div>
 						</div>
@@ -59,31 +62,11 @@
 			</div>
 			<div class="products-background">
 				<div class="products">
-					<h1 style="text-align: center; padding: 30px;">Lorem ipsum dolor sit amet</h1>
-					<div class="product-grid">
-						<div class="product">
-							<img src="">
-							<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem commodi eaque libero perspiciatis quasi sed totam? Consequuntur, illum, iste.</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur deleniti eligendi excepturi expedita illum perferendis, porro quasi sequi voluptas voluptatum!</p>
-							<button class="more-btn">Подробнее</button>
-						</div>
-						<div class="product">
-							<img src="">
-							<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad deleniti dolore eligendi itaque libero officia perspiciatis, quisquam temporibus veniam <voluptatibus class=""></voluptatibus></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dolorem dolorum incidunt labore laudantium magnam maiores nemo temporibus. Hic, quod!</p>
-							<button class="more-btn">Подробнее</button>
-						</div>
-						<div class="product">
-							<img src="">
-							<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus deleniti facilis fugiat in, magni neque quaerat repudiandae totam unde veniam?</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi ex id illum iusto neque numquam officia quaerat quidem quisquam tempora.</p>
-							<button class="more-btn">Подробнее</button>
-						</div>
-					</div>
+				        {% include 'store/price_list.html' %}
+
 				</div>
 				<div>
 					<div style="margin: auto; display: flex;">
-						<button style="margin: auto; margin-bottom:20px;" class="more-btn">Все курсы</button>
 					</div>
 				</div>
 			</div>

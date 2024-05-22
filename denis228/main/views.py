@@ -1,8 +1,9 @@
 from django.shortcuts import render
-# Create your views here.
+from django.apps import apps
+PriceList = apps.get_model('store', 'PriceList')
 
 def index(request):
-    return render(request, 'main/index.html', {})
-
+    price_list = PriceList.objects.all()
+    return render(request, 'main/index.html', {'price_list': price_list} )
 
 

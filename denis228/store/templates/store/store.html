@@ -9,8 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'main/css/media.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/bootstrap/bootstrap.min.css' %}">
 	<title>Document</title>
-
 </head>
 <body>
 {% include 'store/cart_items.html' %}
@@ -23,9 +23,11 @@
 				<ul class="menu">
                     <li class="cart-menu"><img id="cart-toggler" style="width: 30px; height: 30px" src="{% static 'store/imgs/cart-shopping-fast-svgrepo-com.svg' %}"></a></li>
 				  <li><a href="{% url 'main' %}">Главная</a></li>
-				  <li><a href="#">авав</a></li>
-				  <li><a href="#">аввав</a></li>
-				  <li><a>ававав</a></li>
+				   {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
 				</ul>
 				<div class="mobile-menu">
 				  <div class="bar"></div>
@@ -36,47 +38,45 @@
 			</div>
 		</header>
 			<main class="main">
-				<div class="content-main-block-background">
-                    <h1 style="text-align: center;">Магазин оборудования</h1>
-                    <div class="grid-container">
-                        <div class="grid-item">
-                          <a href="#">Видеокамеры</a>
-                          <ul>
-                            <li><a href="#">Внутренние видеокамеры</a></li>
-                            <li><a href="#">Уличные видеокамеры</a></li>
-                            <li><a href="#">Поворотные видеокамеры</a></li>
-                            <li><a href="#">Скрытые видеокамеры</a></li>
-                            <li><a href="#">Wi-Fi камеры</a></li>
-                          </ul>
-                        </div>
-                        <div class="grid-item">
-                          <a href="#">Регистраторы</a>
-                          <ul>
-                            <li><a href="#">DVR регистраторы</a></li>
-                            <li><a href="#">NVR регистраторы</a></li>
-                            <li><a href="#">HVR регистраторы</a></li>
-                            <li><a href="#">Портативные регистраторы</a></li>
-                            <li><a href="#">Автомобильные регистраторы</a></li>
-                          </ul>
-                        </div>
-                        <div class="grid-item">
-                          <a href="#">Аксессуары</a>
-                          <ul>
-                            <li><a href="#">Кабели и разъемы</a></li>
-                            <li><a href="#">Источники питания</a></li>
-                            <li><a href="#">Крепления и держатели</a></li>
-                            <li><a href="#">Жесткие диски и память</a></li>
-                            <li><a href="#">Камеры и объективы</a></li>
-                            <li><a href="#">Мониторы и дисплеи</a></li>
-                          </ul>
-                        </div>
-                      </div>
-				</div>
+			<div class="content-main-block-background">
+    <h1 style="text-align: center;">Магазин оборудования</h1>
+    <div class="grid-container">
+        <div class="grid-item">
+            <a href="#">Компьютеры</a>
+            <ul>
+                <li><a href="#">Ноутбуки</a></li>
+                <li><a href="#">ПК и моноблоки</a></li>
+                <li><a href="#">Планшеты</a></li>
+                <li><a href="#">Аксессуары</a></li>
+            </ul>
+        </div>
+        <div class="grid-item">
+            <a href="#">Смартфоны и гаджеты</a>
+            <ul>
+                <li><a href="#">Смартфоны</a></li>
+                <li><a href="#">Умные часы</a></li>
+                <li><a href="#">Гарнитуры</a></li>
+                <li><a href="#">Зарядные устройства</a></li>
+            </ul>
+        </div>
+        <div class="grid-item">
+            <a href="#">Фото и видео</a>
+            <ul>
+                <li><a href="#">Фотоаппараты</a></li>
+                <li><a href="#">Видеокамеры</a></li>
+                <li><a href="#">Объективы</a></li>
+                <li><a href="#">Аксессуары</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="products">
 	<div class="product-grid">
 		{% block content %}
             {% endblock %}
 </div>
+
+
 
 </div>
 			</main>

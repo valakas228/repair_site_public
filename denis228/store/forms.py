@@ -1,0 +1,17 @@
+from django import forms
+from .models import Product, RepairService, City
+
+class EstimateForm(forms.Form):
+    device = forms.ModelChoiceField(queryset=Product.objects.filter(available=True), label="Название устройства")
+    issue = forms.ModelChoiceField(queryset=RepairService.objects.all(), label="Что случилось с устройством")
+    city = forms.ModelChoiceField(queryset=City.objects.all(), label="Город")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['device'].queryset = Product.objects.filter(available=True)
+        self.fields['issue'].queryset = RepairService.objects.all()
+        self.fields['city'].queryset = City.objects.all()
+
+
+class OrderForm(forms.Form):
+    quantity = forms.IntegerField(min_value=1, label='Количество', initial=1)

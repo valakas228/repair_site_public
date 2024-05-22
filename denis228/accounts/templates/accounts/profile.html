@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
+	<link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,6 +40,7 @@
     </style>
 </head>
 <body>
+{% include 'main/header.html' %}
     <div class="container">
         <h2>Личный кабинет</h2>
         <p>Добро пожаловать, {{ user.username }}!</p>

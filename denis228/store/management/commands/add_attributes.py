@@ -1,9 +1,8 @@
-from store.models import Category, Product, ProductAttribute
+from ...models import Category, Product, ProductAttribute
 
-# Создание категории
 electronics = Category.objects.create(name='Electronics', slug='electronics', description='Electronic gadgets and devices')
 
-# Создание товаров
+
 products_data = [
     {
         'category': electronics, 'name': 'iPhone 14', 'slug': 'iphone-14', 'description': 'Latest Apple smartphone.',

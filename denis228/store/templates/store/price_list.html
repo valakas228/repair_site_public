@@ -1,0 +1,22 @@
+<body>
+    <h1>Прайс-лист</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Устройство</th>
+                <th>Вид ремонта</th>
+                <th>Цена</th>
+                <th>Ожидаемое время(часы)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in price_list %}
+            <tr>
+                <td>{{ item.category.name }}</td>
+                <td>{{ item.repair_type }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.estimated_time_hours }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
