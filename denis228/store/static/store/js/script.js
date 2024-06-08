@@ -8,6 +8,7 @@ let offset = 0;
 
 
 
+
 const moreBtns = document.querySelectorAll('.more-btn');
 
 moreBtns.forEach(btn => {
@@ -25,6 +26,13 @@ moreBtns.forEach(btn => {
 });
 
 const btn = document.querySelector('.more-btn');
+
+btn.addEventListener('click', () => {
+  btn.classList.add('animated', 'pulse'); 
+  setTimeout(() => {
+    btn.classList.remove('animated', 'pulse'); 
+  }, 1000); 
+});
 
 const faqList = document.querySelector('.faq__list');
 const faqQuestions = faqList.querySelectorAll('.faq__question');

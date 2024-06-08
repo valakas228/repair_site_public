@@ -1,0 +1,25 @@
+ <script>
+        $(document).ready(function() {
+            $('#device').change(function() {
+                var productId = $(this).val();
+                var $issueSelect = $('#issue');
+
+                $issueSelect.empty();
+                $issueSelect.append('<option value="">Выберите неисправность</option>');
+
+                if (productId) {
+                    $.ajax({
+                        url: '{% url "get_issues" %}',
+                        data: {
+                            'product_id': productId
+                        },
+                        success: function(data) {
+                            $.each(data, function(index, issue) {
+                                $issueSelect.append('<option value="' + issue.id + '">' + issue.service_name + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>

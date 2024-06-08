@@ -14,17 +14,27 @@
 </head>
 <body>
 	<div class="wrapper">
-			{% block header %}
-			{% endblock %}
-		{% block main %}
-	{% endblock %}
+		{% block header %}
+		{% endblock %}
 
-	{% block faq %}
-	{% endblock %}
-	{% block footer %}
-    {% endblock %}
+		{% block main %}
+		{% endblock %}
+
+
+		{% block form %}
+		{% endblock %}
+
+		{% block faq %}
+		{% endblock %}
+
+
+		{% block footer %}
+    	{% endblock %}
 	</div>
-		<script src="{% static 'main/js/jquery/jquery-3.7.1.js' %}"></script>
+	<script src="{% static 'main/js/jquery/jquery-3.7.1.js' %}"></script>
 	<script src="{% static 'main/js/script.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </body>
 </html>

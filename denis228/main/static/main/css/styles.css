@@ -234,6 +234,7 @@ button{
 
 
 
+
 .form-content{
     max-width: 1000px;
     margin:0 auto;
@@ -241,8 +242,6 @@ button{
     flex-direction: row;
     height: 500px;
 }
-
-
 
 
 .form-wrapper form {
@@ -254,7 +253,62 @@ button{
     display: block;
     margin-bottom: 5px;
   }
-  
+
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        select, button {
+            height: 50px;
+            font-size: 18px;
+        }
+
+        .form-group {
+            display: inline-block;
+            width: calc(33.33% - 10px);
+            margin-right: 10px;
+            vertical-align: top;
+        }
+
+        button[type="submit"] {
+            margin-top: 10px;
+        }
+
 .form-wrapper input[type="text"],
 .form-wrapper  input[type="email"],
 .form-wrapper  input[type="tel"],
@@ -778,7 +832,6 @@ ul {
   height: 270px;
   margin-bottom: 20px;
 }
-
 .product h3 {
   margin-bottom: 10px;
   font-size: 1.2rem;
