@@ -15,6 +15,9 @@ urlpatterns = [
     path('estimate/', estimate_cost, name='estimate_cost'),
     path('get_issues/', views.get_issues, name='get_issues'),
     path('create_order/<slug:product_slug>/', views.create_order, name='create_order'),
+    path('create-repair-request/', views.create_repair_request, name='create_repair_request'),
+    path('repair-request-success/', views.repair_request_success, name='repair_request_success'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
