@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.apps import apps
 from store.forms import EstimateForm
 from store.models import Product, City
-
 PriceList = apps.get_model('store', 'PriceList')
 
 def index(request):
