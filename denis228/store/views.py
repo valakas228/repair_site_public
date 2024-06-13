@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Comment, Cart, CartItem, PriceList, RepairService, City, Order, OrderItem
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .forms import EstimateForm, OrderForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Product, Comment, Cart, CartItem, PriceList, RepairService, City, Order, OrderItem, RepairRequest
+from .forms import EstimateForm, OrderForm, CreateRepairRequestForm
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def store(request):
@@ -15,7 +15,11 @@ def store(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'store/product_detail.html', {'product': product})
+    cart_items = CartItem.objects.all()
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
+    return render(request, 'store/product_detail.html',
+                  {'product': product, 'cart_items': cart_items, 'total_price': total_price})
+
 
 
 @login_required
@@ -130,3 +134,22 @@ def create_order(request, product_slug):
         form = OrderForm()
     return render(request, 'store/create_order.html', {'form': form, 'product': product})
 
+@login_required
+def create_repair_request(request):
+    if request.method == 'POST':
+        form = CreateRepairRequestForm(request.POST)
+        if form.is_valid():
+            repair_request = form.save(commit=False)
+            repair_request.user = request.user
+            repair_request.save()
+            return redirect('repair_request_success')
+    else:
+        form = CreateRepairRequestForm()
+    return render(request, 'store/create_repair_request.html', {'form': form})
+
+@login_required
+def repair_request_success(request):
+    return render(request, 'store/repair_request_success.html')
+
+def is_admin(user):
+    return user.is_staff
