@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание заявки на ремонт</title>
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">\
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.form-group input[type="file"] {
+    padding: 3px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+</style>
+<body>
+    {% include 'main/header.html' %}
+    <div class="container">
+        <h2>Заполните анкету</h2>
+        <p>Она поможет ускорить процесс приемки оборудования</p>
+        <p>Для сложных случаев, можно прикрепить видео или фотографию</p>
+        <p>Если заполнение анкеты вызывает у Вас трудности: <a href="tel:222222">222222</a></p>
+        <h3>Всегда на связи</h3>
+        <p>После выполнения ремонта вам на телефон придет смс с уведомлением о готовности.</p>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.contact_name.id_for_label }}">Фамилия Имя Отчество*</label>
+                {{ form.contact_name }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.device_type.id_for_label }}">Аппарат*</label>
+                {{ form.device_type }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.issue_description.id_for_label }}">Опишите неисправность</label>
+                {{ form.issue_description }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.contact_email.id_for_label }}">Email</label>
+                {{ form.contact_email }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.contact_phone.id_for_label }}">Телефон</label>
+                {{ form.contact_phone }}
+            </div>
+            <div class="form-group">
+                <label for="attachment">Прикрепите фото или видео</label>
+                <input type="file" id="attachment" name="attachment">
+            </div>
+            <button type="submit">Отправить заявку</button>
+        </form>
+    </div>
+</body>
+</html>
