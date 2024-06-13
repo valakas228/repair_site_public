@@ -1,26 +1,22 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Войти</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
         form {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             width: 300px;
+            margin: auto;
         }
         h2 {
             text-align: center;
@@ -52,16 +48,25 @@
             text-align: center;
             margin-top: 10px;
         }
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+{% include 'main/header.html' %}
+
     <form method="post">
         {% csrf_token %}
         <h2>Вход</h2>
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit">Войти</button>
         <div class="register-link">
-             Нет аккаунта?<a href="{% url 'register' %}">Зарегистрироваться</a>
+             Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a>
         </div>
     </form>
 </body>

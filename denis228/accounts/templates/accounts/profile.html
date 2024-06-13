@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
-	<link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,12 +16,15 @@
             text-align: center;
         }
         .container {
-            max-width: 600px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container2{
+            margin: 30px;
+            overflow: scroll;
         }
         h2 {
             color: #333;
@@ -37,16 +40,90 @@
         a:hover {
             text-decoration: underline;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
 {% include 'main/header.html' %}
-    <div class="container">
-        <h2>Личный кабинет</h2>
-        <p>Добро пожаловать, {{ user.username }}!</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Дата регистрации: {{ user.date_joined }}</p>
-        <a href="{% url 'logout' %}">Выйти</a>
+<div class="container mt-5">
+    <h2>Личный кабинет</h2>
+    <p>Добро пожаловать, {{ user.username }}!</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Дата регистрации: {{ user.date_joined }}</p>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Выйти</a>
+    <a href="{% url 'change_password' %}" class="btn btn-primary">Сменить пароль</a>
+
+    {% if user.is_staff %}
+    <div class="container2">
+    <h2>Заявки на ремонт</h2>
+    <table class="table">
+        <tr>
+            <th>Имя клиента</th>
+            <th>Тип устройства</th>
+            <th>Описание проблемы</th>
+            <th>Контактный email</th>
+            <th>Контактный телефон</th>
+            <th>Дата создания</th>
+            <th>Ответ</th>
+            <th>Действия</th>
+        </tr>
+        {% for request in admin_repair_requests %}
+        <tr>
+            <td>{{ request.contact_name }}</td>
+            <td>{{ request.device_type }}</td>
+            <td>{{ request.issue_description }}</td>
+            <td>{{ request.contact_email }}</td>
+            <td>{{ request.contact_phone }}</td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.response }}</td>
+            <td style="display: flex; flex-direction: column">
+                <a href="{% url 'edit_repair_request' request.id %}" class="btn btn-primary">Ответить</a><br>
+                <a href="{% url 'delete_repair_request' request.id %}" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
     </div>
+    {% endif %}
+<div class="container2">
+    <h2>Мои заявки</h2>
+    <table class="table">
+        <tr>
+            <th>Имя клиента</th>
+            <th>Тип устройства</th>
+            <th>Описание проблемы</th>
+            <th>Контактный email</th>
+            <th>Контактный телефон</th>
+            <th>Дата создания</th>
+            <th>Ответ</th>
+        </tr>
+        {% for request in repair_requests %}
+        <tr>
+            <td>{{ request.contact_name }}</td>
+            <td>{{ request.device_type }}</td>
+            <td>{{ request.issue_description }}</td>
+            <td>{{ request.contact_email }}</td>
+            <td>{{ request.contact_phone }}</td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.response }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
 </body>
 </html>
