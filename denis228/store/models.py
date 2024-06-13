@@ -126,3 +126,16 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in order {self.order.id}"
+
+
+class RepairRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    device_type = models.CharField(max_length=100)
+    issue_description = models.TextField()
+    contact_name = models.CharField(max_length=100)
+    contact_email = models.EmailField()
+    contact_phone = models.CharField(max_length=15)
+    created_at = models.DateTimeField(auto_now_add=True)
+    response = models.TextField(blank=True, null=True)
+    def __str__(self):
+        return f"{self.contact_name} - {self.device_type}"
