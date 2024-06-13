@@ -8,6 +8,7 @@ body {
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .wrapper {
@@ -430,11 +431,6 @@ button{
 }
 
 
-.logo {
-    width: 150px;
-    min-height: 60px;
-    line-height: 61px;
-}
 
 
 .header a:hover {
@@ -601,7 +597,6 @@ ul {
     max-width: 1400px;
     margin: auto;
     padding: 50px;
-    margin-top: 50px;
 }
 
 .products img{
