@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var cart = document.querySelector('.cart');
 
     cartToggler.addEventListener('click', function() {
-        // Переключаем класс show для корзины, чтобы показать или скрыть ее с анимацией
         cart.classList.toggle('show');
     });
 });
